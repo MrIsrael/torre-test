@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+// Node modules
+import React, { useState } from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-function App() {
+// Provider from context
+import { TorreProvider } from './context/TorreState'
+
+// Layout components
+
+// Page components
+import Main from './components/pages/Main'
+
+// Styles
+import './App.scss'
+
+const App = () => {
+  const [flag, setFlag] = useState(0)
+  // flag = 0     --> Main
+
+  const changeScreen = (val) => { setFlag(val) }
+  console.log('Active screen: ' + flag)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <TorreProvider>
+      <Router>
+
+        <div>
+          <div className={flag === 0 ? 'home-margin' : 'default-margin'}></div>
+          {flag === 0 && <Main changeScreen = {changeScreen} />}
+        </div>
+
+        <div>
+          <Switch>
+            <Route path='/A' render={(props) => ( <Main {...props} changeScreen = {changeScreen} /> )} />
+            <Route path='/B/:wildcard' render={(props) => ( <Main {...props} changeScreen = {changeScreen} /> )} />
+            {/* <Route exact path='/' render={() => ( <Main changeScreen = {changeScreen} /> )} /> */}
+          </Switch>
+        </div>
+
+      </Router>
+    </TorreProvider>
+  )
 }
 
-export default App;
+export default App
