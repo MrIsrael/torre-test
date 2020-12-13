@@ -13,10 +13,8 @@ const StartPage = ({ changeScreen }) => {
   return (
     <Fragment>
 
-      <div className='s-center s-to-center ed-grid s-grid-1 m-grid-3 
-                      rows-gap s-gap-05 s-main-center s-cross-center'
-            style={{ height: layoutHeight }}
-      >
+      <div className='s-center s-to-center ed-grid s-grid-1 m-grid-3 rows-gap s-gap-05 s-main-center s-cross-center'
+           style={{ height: layoutHeight }}>
 
         <div className='m-x-2'>
           <div className='s-60 s-to-center'>

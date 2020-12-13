@@ -4,7 +4,7 @@ import TorreReducer from './TorreReducer'
 
 // Initial state
 const initialState = {
-  userinfo: [],
+  userinfo: null,
   flagDataLoaded: false
 }
 
@@ -15,13 +15,12 @@ export const TorreContext = createContext(initialState)
 export const TorreProvider = ({ children }) => {
   const [state, dispatch] = useReducer(TorreReducer, initialState)
 
-  // Action / get names list from Torre API (endpoint test)
-  const getNames = async (username) => {
+  // Action / get user data from Torre API, searching by username
+  const getUserData = async (username) => {
     console.log('Getting data...')
     // Using "https://cors-anywhere.herokuapp.com/" header on GET request to avoid CORS error when running app from localhost
     const res = await axios.get(`https://cors-anywhere.herokuapp.com/https://torre.bio/api/bios/${username}`)
     // const res = await axios.get(`https://torre.bio/api/bios/${username}`, { headers: {"Access-Control-Allow-Origin": "*"} })
-    // console.log(res)
     console.log(res.data)
     dispatch({
       type: 'GET_DATA',
@@ -30,12 +29,21 @@ export const TorreProvider = ({ children }) => {
     })
   }
 
+  // Action / clear older user info from global state
+  function resetUserinfo() {
+    dispatch({
+      type: 'RESET_USER_INFO',
+      payload: null
+    })
+  }
+
   return (
     <TorreContext.Provider 
       value={{
         userinfo: state.userinfo,
         flagDataLoaded: state.flagDataLoaded,
-        getNames
+        getUserData,
+        resetUserinfo
       }}
     >
       { children }

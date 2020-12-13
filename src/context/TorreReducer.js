@@ -6,6 +6,11 @@ const TorreReducer = (state, action) => {
         userinfo: action.payload,
         flagDataLoaded: action.flag
       }
+    case 'RESET_USER_INFO':
+      return {
+        ...state,
+        userinfo: action.payload
+      }
     default:
       return state
   }

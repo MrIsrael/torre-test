@@ -34,7 +34,7 @@ const App = () => {
 
         <div>
           {flag === 0 && <StartPage changeScreen = {changeScreen} />}
-          {/* flag === 1 && <SearchUser changeScreen = {changeScreen} /> */}
+          {flag === 1 && <SearchUser changeScreen = {changeScreen} />}
           {flag === 2 && <GenomeViewer changeScreen = {changeScreen} />}
         </div>
 
