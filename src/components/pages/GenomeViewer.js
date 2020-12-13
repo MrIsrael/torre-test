@@ -35,10 +35,10 @@ const GenomeViewer = () => {
           <div className='s-center s-to-center ed-grid s-grid-10 rows-gap s-gap-05 s-main-center s-cross-center'
                style={{ height: layoutHeight }}>
 
-            <div className='s-cols-10 s-mb-2'>
+            <div className='s-cols-10 s-mb-1 m-mb-2'>
               <h1 className='s-mb-2 m-mb-3'>User's bio highlights</h1>
               <p style={{ color: 'rgb(205, 220, 57)' }}>{dataPage}/4</p>
-              <div className='m-25 s-to-center s-mb-1 m-mb-3'>
+              <div className='s-40 m-25 s-to-center s-mb-1 m-mb-3'>
                 <div className='circle img-container'>
                   <img src={userinfo.person.picture} alt={userinfo.person.name} />
                 </div>
@@ -70,7 +70,7 @@ const GenomeViewer = () => {
               {dataPage === 4 && <div>
                                   <i className='fas fa-graduation-cap' style={{ fontSize: '50px' }}></i>
                                   <h1>Education</h1>
-                                  {getEducationTitles(userinfo).map((title, index) => <p key={index}>{title}</p>)}
+                                  {getEducationTitles(userinfo).map((title, index) => <p className='navbar-font s-mb-05' key={index}>{title}</p>)}
                                 </div>}
             </div>
 

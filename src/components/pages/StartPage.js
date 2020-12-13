@@ -24,7 +24,7 @@ const StartPage = ({ changeScreen }) => {
           <p>
             <span>by </span>
             <a className='dev-link' href='https://bio.torre.co/es/israeluribe/' 
-                target='_blank' rel='noopener noreferrer'>
+                target='_blank' rel='noopener noreferrer' style={{ color: 'rgb(236, 237, 237)', textDecoration: 'none' }}>
               MrIsrael
             </a>
           </p>
