@@ -23,6 +23,38 @@ body {
   cursor: pointer;
 }
 
+/* NAVBAR */
+
+.navbar-font {
+  @include to(m) {
+    font-size: 11px;
+  }
+
+  @include from(m) {
+    font-size: 17px;
+  }
+}
+
+.navbar-logo-height {
+  @include to(m) {
+    max-height: 20px;
+  }
+
+  @include from(m) {
+    max-height: 30px;
+  }
+}
+
+.navbar-title-center {
+  @include to(m) {
+    font-size: 15px;
+  }
+
+  @include from(m) {
+    font-size: 20px;
+  }
+}
+
 /* BUTTONS */
 
 .t-button {
@@ -41,6 +73,21 @@ body {
 .t-button:hover {
   background-color: rgb(205, 220, 57);
 }
+
+.t-blinking-button button {
+  animation: start-page-button 4s linear 1s infinite alternate;
+}
+
+/* ANIMATIONS */
+
+@keyframes start-page-button {
+  from { background-color: rgb(128, 222, 234); }
+  to { background-color: rgb(205, 220, 57); }
+}
+
+
+
+
 
 /* RESPONSIVE SIZES FOR TITLE FONTS */
 

@@ -6,37 +6,38 @@ import React, { useState } from 'react'
 import { TorreProvider } from './context/TorreState'
 
 // Layout components
+import Navbar from './components/layout/Navbar'
 
 // Page components
 import StartPage from './components/pages/StartPage'
+import SearchUser from './components/pages/SearchUser'
+import GenomeViewer from './components/pages/GenomeViewer'
 
 // Styles
 import './App.scss'
 
 const App = () => {
-  const [flag, setFlag] = useState(0)
-  // flag = 0     --> StartPage
+  const [flag, setFlag] = useState(1)
+  // flag = 0     --> Start page
+  // flag = 1     --> Search user
+  // flag = 2     --> Genome viewer
 
   const changeScreen = (val) => { setFlag(val) }
   console.log('Active screen: ' + flag)
 
   return (
     <TorreProvider>
-      {/* <Router> */}
+
+        <div>
+          {flag !== 0 && <Navbar changeScreen = {changeScreen} />}
+        </div>
 
         <div>
           {flag === 0 && <StartPage changeScreen = {changeScreen} />}
+          {/* flag === 1 && <SearchUser changeScreen = {changeScreen} /> */}
+          {flag === 2 && <GenomeViewer changeScreen = {changeScreen} />}
         </div>
 
-        {/* <div>
-          <Switch>
-            <Route path='/A' render={(props) => ( <Main {...props} changeScreen = {changeScreen} /> )} />
-            <Route path='/B/:wildcard' render={(props) => ( <Main {...props} changeScreen = {changeScreen} /> )} /> */}
-            {/* <Route exact path='/' render={() => ( <Main changeScreen = {changeScreen} /> )} /> */}
-          {/* </Switch>
-        </div> */}
-
-      {/* </Router> */}
     </TorreProvider>
   )
 }
