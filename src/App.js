@@ -17,7 +17,7 @@ import GenomeViewer from './components/pages/GenomeViewer'
 import './App.scss'
 
 const App = () => {
-  const [flag, setFlag] = useState(1)
+  const [flag, setFlag] = useState(0)
   // flag = 0     --> Start page
   // flag = 1     --> Search user
   // flag = 2     --> Genome viewer
@@ -35,7 +35,7 @@ const App = () => {
         <div>
           {flag === 0 && <StartPage changeScreen = {changeScreen} />}
           {flag === 1 && <SearchUser changeScreen = {changeScreen} />}
-          {flag === 2 && <GenomeViewer changeScreen = {changeScreen} />}
+          {flag === 2 && <GenomeViewer />}
         </div>
 
     </TorreProvider>

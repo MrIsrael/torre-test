@@ -22,6 +22,7 @@ export const TorreProvider = ({ children }) => {
     const res = await axios.get(`https://cors-anywhere.herokuapp.com/https://torre.bio/api/bios/${username}`)
     // const res = await axios.get(`https://torre.bio/api/bios/${username}`, { headers: {"Access-Control-Allow-Origin": "*"} })
     console.log(res.data)
+    getEducationTitles(res.data)
     dispatch({
       type: 'GET_DATA',
       payload: res.data,
@@ -35,6 +36,14 @@ export const TorreProvider = ({ children }) => {
       type: 'RESET_USER_INFO',
       payload: null
     })
+  }
+
+  function getEducationTitles(userinfo) {
+    let data
+    data = userinfo.education.map(obj => Object.entries(obj))
+    console.log(data)
+    // data = data.map(arr => arr.map(arr2 => arr2[0] === 'name'))
+    return data
   }
 
   return (
