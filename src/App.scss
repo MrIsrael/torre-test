@@ -14,23 +14,9 @@
 /* GLOBAL STYLES: */
 
 body {
-  background: rgb(186, 188, 188);
+  background: rgb(39, 42, 45);
   color: rgb(236, 237, 237);
   font-family: 'Didact Gothic', sans-serif;
-}
-
-.dark-bkg {
-  background-color: rgb(39, 42, 45);
-}
-
-.default-margin {
-  @include to(m) {
-    margin-top: 15px;
-  }
-
-  @include from(m) {
-    margin-top: 30px;
-  }
 }
 
 .cursor-pointer {

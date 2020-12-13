@@ -25,7 +25,6 @@ const App = () => {
       {/* <Router> */}
 
         <div>
-          <div className={flag === 0 ? 'home-margin' : 'default-margin'}></div>
           {flag === 0 && <StartPage changeScreen = {changeScreen} />}
         </div>
 
