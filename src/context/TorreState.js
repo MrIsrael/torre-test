@@ -18,8 +18,13 @@ export const TorreProvider = ({ children }) => {
   // Action / get user data from Torre API, searching by username
   const getUserData = async (username) => {
     console.log('Getting data...')
+    
     // Using "https://cors-anywhere.herokuapp.com/" header on GET request to avoid CORS error when running app from localhost
-    const res = await axios.get(`https://cors-anywhere.herokuapp.com/https://torre.bio/api/bios/${username}`)
+    // const res = await axios.get(`https://cors-anywhere.herokuapp.com/https://torre.bio/api/bios/${username}`)
+
+    // "https://cors-anywhere.herokuapp.com/" header removed on GET request when running app from Netlify servers
+    const res = await axios.get(`https://torre.bio/api/bios/${username}`)
+    
     // const res = await axios.get(`https://torre.bio/api/bios/${username}`, { headers: {"Access-Control-Allow-Origin": "*"} })
     console.log(res.data)
     dispatch({

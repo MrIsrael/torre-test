@@ -23,7 +23,7 @@ const SearchUser = ({ changeScreen }) => {
     } else {
       setAlert(false)
       getUserData(username)                     // trigger GET request
-      setTimeout(() => { setCheckUserinfo(true) }, 1750)
+      setTimeout(() => { setCheckUserinfo(true) }, 2500)
     }
   }
 
