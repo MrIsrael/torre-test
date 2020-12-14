@@ -21,9 +21,10 @@ const SearchUser = ({ changeScreen }) => {
       setAlertMessage('Please do not leave the input field empty.')
       setAlert(true) 
     } else {
-      setAlert(false)
+      setAlertMessage('Searching...')
+      setAlert(true)
       getUserData(username)                     // trigger GET request
-      setTimeout(() => { setCheckUserinfo(true) }, 2500)
+      setTimeout(() => { setCheckUserinfo(true) }, 3000)
     }
   }
 
@@ -49,7 +50,8 @@ const SearchUser = ({ changeScreen }) => {
           <h1 className='s-mb-3 m-mb-4'>Torre profile search</h1>
           {/* <label htmlFor='user-input'>Username:</label> */}
           <input className='input-style s-radius s-85 m-70' autoFocus id='user-input' type='text' placeholder='Please enter a valid Torre username here'
-                 value={username} onChange={(event) => setUsername(event.target.value.toLowerCase())} />
+                 value={username} onChange={(event) => setUsername(event.target.value.toLowerCase())}
+                 onKeyDown={(event) => { if (event.keyCode === 13) { verifyInput() } } } />
         </div>
 
         <p className={alert ? 'alert-text m-y-2 m-x-2 s-py-1 s-mb-1 s-100 m-85 s-to-center s-center' : 'hidden'}>{alertMessage}</p>
